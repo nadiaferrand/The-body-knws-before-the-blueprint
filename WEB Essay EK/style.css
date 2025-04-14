@@ -1,0 +1,297 @@
+/* Reset + base */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+    background: #fff;
+    overflow: auto;
+  }
+  
+  /* Homepage */
+  .homepage {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background-image: url('backgroundwomen.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+  
+  .title {
+    color: white;
+    font-size: 5em;
+    font-weight: bold;
+    z-index: 2;
+    text-align: center;
+    line-height: 1.2;
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .underline {
+    width: 60px;
+    height: 4px;
+    background-color: white;
+    margin: 20px auto 0;
+  }
+  
+  .begin-trail {
+    margin-top: 60px;
+    font-size: 1.2em;
+    color: white;
+    cursor: pointer;
+    z-index: 2;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+  
+  .begin-trail:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  #floating-titles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+  
+  .float {
+    position: absolute;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: white;
+    pointer-events: none;
+    animation: floatMove 12s infinite ease-in-out alternate;
+  }
+  @keyframes floatMove {
+    0%   { transform: translate(0px, 0px); }
+    100% { transform: translate(50px, 50px); }
+  }
+  
+  /* Quiz */
+  .quiz-box {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.95);
+    padding: 30px;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .quiz-content {
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  .quiz-question {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .quiz-options button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  .quiz-feedback {
+    margin: 15px 0;
+    font-size: 1em;
+  }
+  
+  .continue-btn {
+    margin-top: 10px;
+    font-size: 1em;
+    padding: 10px 20px;
+  }
+  
+  /* Trail Canvas */
+  .trail-canvas {
+    position: relative;
+    width: 200vw;
+    height: 200vh;
+    background: #fff;
+    overflow: visible;
+  }
+  
+  /* Paragraphs */
+  .trail-section {
+    position: absolute;
+    max-width: 800px;
+    padding: 60px;
+    font-size: 1.25em;
+    line-height: 1.8;
+    text-align: justify;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    border-radius: 12px;
+  }
+  
+  .paragraph-1 {
+    top: 10vh;
+    left: 5vw;
+    background-color: #fef4eb;
+  }
+  
+  .paragraph-2 {
+    top: 120vh;
+    left: 100vw;
+    background-color: #f1af93;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+  }
+  
+  .paragraph-2.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Quote path */
+  .quote-path {
+    position: absolute;
+    top: 55vh;
+    left: 15vw;
+    width: 70vw;
+    height: 40vh;
+  }
+  
+  .quote-text {
+    font-size: 1.2em;
+    fill: #333;
+  }
+  
+  .home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+  }
+  
+  .trail-canvas {
+    position: relative;
+    min-width: 100vw;
+    min-height: 300vh;
+    background: white;
+  }
+  
+  h2 {
+    font-size: 1.6em;
+    margin-bottom: 1rem;
+  }
+  
+
+  .quote-path .quote-text {
+    font-family: serif;
+    font-style: italic;
+    font-size: 1em;
+    fill: #333;
+  }
+  
+  .fade-in-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .fade-in-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 999;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    background-color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  .trail-section {
+    position: absolute;
+    z-index: 3;
+    width: 60vw;
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
+  
+  .trail-paragraph {
+    background-color: transparent;
+    padding: 2rem;
+    color: #000;
+  }
+  
+  .term, .author {
+    position: relative;
+    font-weight: bold;
+    color: #c1440e;
+    border-bottom: 1px dashed #c1440e;
+    cursor: help;
+  }
+  
+  .term::after,
+  .author::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 120%;
+    left: 0;
+    background-color: #fef4eb;
+    color: #333;
+    padding: 16px 20px;
+    font-size: 1em;
+    line-height: 1.6;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    max-width: 380px;
+    white-space: pre-line;
+    display: none;
+    z-index: 1000;
+  }
+  
+  .term:hover::after,
+  .author:hover::after {
+    display: block;
+  }
+  

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Body Knows Before The Blueprint</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- === HOMEPAGE === -->
+  <section class="homepage" id="homepage">
+    <div class="background"></div>
+    <div class="overlay"></div>
+
+    <div class="title">
+      <h1>The Body Knows<br>Before The Blueprint</h1>
+      <div class="underline"></div>
+    </div>
+
+    <div id="floating-titles">
+      <div class="float">Contribution to Knowledge</div>
+      <div class="float">Introduction</div>
+      <div class="float">Embodied Knowledge and the Feminist Rewriting of Space</div>
+      <div class="float">Infrastructure Beyond Efficiency</div>
+      <div class="float">Infrastructure Design and Participatory Approaches</div>
+      <div class="float">Embodied Routes as Spatial Authorship</div>
+      <div class="float">Conclusion</div>
+    </div>
+
+    <div class="begin-trail" onclick="openQuiz()">Begin the trail</div>
+  </section>
+
+  <!-- === QUIZ POPUP === -->
+  <div id="quiz-popup" class="quiz-box" style="display: none;">
+    <div class="quiz-content">
+      <p class="quiz-question">
+        According to global statistics, women and girls are responsible for water collection in what percentage of households in water-scarce regions?
+      </p>
+
+      <div class="quiz-options">
+        <button onclick="selectAnswer(this, '32%')">32%</button>
+        <button onclick="selectAnswer(this, '48%')">48%</button>
+        <button onclick="selectAnswer(this, '72%')">72%</button>
+        <button onclick="selectAnswer(this, '80%')">80%</button>
+      </div>
+
+      <p id="quiz-feedback" class="quiz-feedback"></p>
+
+      <button id="continue-button" class="continue-btn" style="display: none;" onclick="goToTrail()">Continue</button>
+    </div>
+  </div>
+
+<!-- Trail Canvas Wrapper -->
+<style>
+    .term, .author {
+      position: relative;
+      font-weight: bold;
+      color: #c1440e;
+      border-bottom: 1px dashed #c1440e;
+      cursor: help;
+    }
+  
+    .term:hover::after,
+    .author:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: 120%;
+      left: 0;
+      transform: translateY(0);
+      background-color: #fef4eb;
+      color: #333;
+      padding: 18px 22px;
+      font-size: 1.05em;
+      line-height: 1.7;
+      white-space: normal;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      width: max-content;
+      max-width: 380px;
+      z-index: 9999;
+      display: block;
+    }
+  </style>
+  
+  <div id="trail-section" class="trail-canvas" style="display: none; position: relative; width: 100vw; background-color: #fef4eb; padding: 10vh 5vw;">
+  
+    <!-- Home Button -->
+    <button id="homeButton" onclick="goHome()" class="home-button" style="display: block; position: fixed; top: 20px; left: 20px; z-index: 999; background-color: white; border: 1px solid #ccc; padding: 10px 16px; border-radius: 8px; font-size: 1em; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">← Home</button>
+  
+<!-- Trail Canvas Wrapper -->
+<style>
+    .term, .author {
+      position: relative;
+      font-weight: bold;
+      color: #c1440e;
+      border-bottom: 1px dashed #c1440e;
+      cursor: help;
+    }
+  
+    .term::after,
+    .author::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      top: 120%;
+      left: 0;
+      background-color: #fef4eb;
+      color: #333;
+      padding: 16px 20px;
+      font-size: 1em;
+      line-height: 1.6;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+      max-width: 380px;
+      white-space: pre-line;
+      display: none;
+      z-index: 1000;
+    }
+  
+    .term:hover::after,
+    .author:hover::after {
+      display: block;
+    }
+  </style>
+  
+  <div style="display: block; width: 100%; padding: 4rem 1rem; max-width: 900px; margin: auto;">
+  
+    <!-- Paragraph 1 -->
+    <section style="background-color: #f8cdb3; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-size: 1.1em; line-height: 1.6; color: #000;">
+      <h2>Contribution to Knowledge</h2>
+      <p>This paper rethinks infrastructure through the lens of <span class="term" data-tooltip="A field that centers the embodied, lived, and situated experience of women in relation to space, politics, and place-making.">feminist geography</span> and <span class="term" data-tooltip="Knowledge that arises through bodily experience, sensory navigation, and physical interaction with the world.">embodied knowledge</span>, centering the everyday practices of rural Kenyan women who navigate <span class="term" data-tooltip="The systems, paths, and informal arrangements through which people access basic services like water.">water access systems</span> under conditions of scarcity and threat. Drawing on theorists such as <span class="author" data-tooltip="Rose, G. (1993). Feminism and Geography. Polity Press.
+  Argues that all knowledge is situated—there is no 'view from nowhere'.">Gillian Rose</span>, <span class="author" data-tooltip="Massey, D. (2005). For Space. Sage.
+  Introduced the concept of space as a product of interrelations.">Doreen Massey</span>, <span class="author" data-tooltip="Merleau-Ponty, M. (1962). Phenomenology of Perception. Routledge.
+  Emphasized the body as the primary site of knowing the world.">Maurice Merleau-Ponty</span>, <span class="author" data-tooltip="Bunge, W. (1971). Fitzgerald: Geography of a Revolution. Schenkman.
+  Mapped urban injustice from the perspective of those most affected.">William Bunge</span>, <span class="author" data-tooltip="Le Guin, U.K. (1986). The Carrier Bag Theory of Fiction. Women’s Press.
+  Proposed an alternative storytelling rooted in care and collectivity.">Ursula K. Le Guin</span>, <span class="author" data-tooltip="Benjamin, W. (1999). The Arcades Project. Harvard University Press.
+  Explored how memory and experience shape urban life.">Walter Benjamin</span>, and others, the essay challenges <span class="term" data-tooltip="The idea that infrastructure is objective and value-neutral—rather than political and lived.">technocratic understandings of infrastructure</span> as neutral or abstract. Instead, it foregrounds the <span class="term" data-tooltip="The body as a tool of resistance, authorship, and spatial knowledge.">body as a site of spatial expertise</span>, exploring how daily acts of walking, carrying, and negotiating <span class="term" data-tooltip="Paths shaped by necessity and lived practice.">water routes</span> function as forms of resistance, authorship, and citizenship. By bridging critical theory with grounded, gendered practices of spatial navigation, this paper contributes to the field of <span class="term" data-tooltip="The design of urban and rural environments with attention to how people live and move through space.">city design</span> by proposing an <span class="term" data-tooltip="Planning shaped by presence, care, and collaboration.">embodied and participatory framework</span> for infrastructural planning—one that repositions <span class="term" data-tooltip="An ethic of attentiveness and maintenance that challenges efficiency-based models.">care</span>, <span class="term" data-tooltip="Spontaneous adaptation in response to real-world constraints.">improvisation</span>, and <span class="term" data-tooltip="The real, situated, and sensory ways people experience the built environment.">lived experience</span> as central to urban and rural design processes. Through a combination of philosophical reflection, theoretical comparison, and case study analysis, this work argues for a critical rewriting of space—one that moves from the <span class="term" data-tooltip="Abstract representation of space, often removed from how it is lived.">map</span> to the <span class="term" data-tooltip="Embodied, felt presence and labor.">muscle</span>, from policy to presence, and from data to lived experience.</p>
+    </section>
+  
+    <!-- Quote 1 -->
+    <div style="margin: 3rem 0; text-align: center; font-style: italic; font-size: 1em; color: #333; max-width: 800px;">
+      “Sometimes we know the water is gone by how the ground feels beneath our feet.”<br>
+      <span style="font-size: 0.9em;">– Njeri, field interview (2020)</span>
+    </div>
+  
+    <!-- Paragraph 2 -->
+    <section style="background-color: #ea9e7d; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-size: 1.1em; line-height: 1.6; color: white;">
+      <h2>Introduction</h2>
+      <p>The <span class="term" data-tooltip="Knowledge that arises from lived physical experience, particularly through movement and repetitive routines.">body</span> knows before the <span class="term" data-tooltip="Formal design plans and infrastructural intentions, often disconnected from lived experience.">blueprint</span>. It knows the routes that aren't on the map, the water points that don't show up in GIS systems, the wait, the weight, the wear. This essay begins from that <span class="term" data-tooltip="Embodied knowledge passed through repeated, sensory, physical navigation of space.">embodied knowledge</span>; often dismissed, often invisible, arguing not just for its inclusion in urban planning and geography, but for its centrality.
+      Each morning in rural Kenya, women embark on familiar, physically demanding routes to fetch water. These acts are not merely tasks of survival; they are <span class="term" data-tooltip="Actions through which local knowledge of terrain, access, and social infrastructure are developed.">practices of spatial knowledge-making</span>, shaped by care, caution, improvisation, and memory.
+      Through each step, pause, and reroute, women read and rewrite infrastructure not as a static system but as a <span class="term" data-tooltip="Space that is ever-changing, affected by human agency, conflict, and adaptation.">living terrain</span>; contested, intimate, political.
+  
+      Drawing from <span class="term" data-tooltip="A field of study that centers the role of gender, care, and embodiment in the understanding of urban and infrastructural space.">feminist geography</span>, urban theory, and infrastructural critique, this piece gathers a collective of thinkers whose ideas, like seeds, grow through the cracks of technocratic concrete: <span class="author" data-tooltip="Massey, D. (2005). For Space. Sage Publications.
+  Coined the concept of space as dynamic and relational.">Massey (2005)</span>, <span class="author" data-tooltip="Rose, G. (1993). Feminism and Geography: The Limits of Geographical Knowledge. Polity Press.
+  Critiqued traditional geographic knowledge as masculinist and exclusionary.">Rose (1993)</span>, <span class="author" data-tooltip="Le Guin, U.K. (1986). The Carrier Bag Theory of Fiction. Women's Press.
+  Reimagined storytelling and infrastructure through the metaphor of containment and care.">Le Guin (1986)</span>, <span class="author" data-tooltip="Merleau-Ponty, M. (1962). Phenomenology of Perception. Routledge.
+  Articulated the body as the primary site of perception and understanding.">Merleau-Ponty (1962)</span>, Fitzgerald, Warburg, <span class="author" data-tooltip="Benjamin, W. (1999). The Arcades Project. Harvard University Press.
+  Explored spatial memory, flâneur culture, and city life as montage.">Benjamin (1999)</span>.
+      Each offers a different method, a different way of listening to the world. What emerges is not a smooth narrative, but a textured garden of theory and practice, resistance and care.
+  
+      At its heart, this essay asks: whose knowledge shapes our cities? And what forms of expertise have been erased in the name of <span class="term" data-tooltip="A framework that values speed and control over inclusion and lived experience.">efficiency</span>, <span class="term" data-tooltip="Presented as unbiased or apolitical, but often concealing dominant power structures.">neutrality</span>, or progress?
+      By centering the <span class="term" data-tooltip="Physical labor carried out by women that interacts directly with broken or absent infrastructure.">embodied labor</span> of women navigating broken or absent infrastructure, this work reframes planning not as a top-down science, but as a relational and lived practice. It is in <span class="term" data-tooltip="The trace of daily, repeated, physical presence.">footsteps</span>, not forecasts, that space is most profoundly known.</p>
+    </section>
+  
+    <!-- Quote 2 -->
+    <div style="margin: 3rem 0; text-align: center; font-style: italic; font-size: 1em; color: #333; max-width: 800px;">
+      “When we walk for water, we carry more than just buckets — we carry the history of our mothers.”<br>
+      <span style="font-size: 0.9em;">– Wambui, community interview (2022)</span>
+    </div>
+  
+    <!-- Paragraph 3 -->
+    <section style="background-color: #ba6547; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-size: 1.1em; line-height: 1.6; color: white;">
+      <h2>Embodied Knowledge and the Feminist Rewriting of Space</h2>
+      <p>Each morning, in rural Kenya, women rise before sunrise to begin the familiar yet strenuous journey to fetch water. These daily routes, often long, physically taxing, and shaped by negotiation with both terrain and social threat are not just acts of survival. They are <span class="term" data-tooltip="Local and bodily-based forms of knowing that arise through movement and repetition.">practices of spatial knowledge-making</span>. Through each step, pause, and reroute, women come to know infrastructure not as an abstract system, but as a <span class="term" data-tooltip="Dynamic space shaped by everyday interaction, resistance, and necessity.">living, contested, and embodied terrain</span>.
+  
+      This is where <span class="term" data-tooltip="A subfield of geography that focuses on the role of gender, identity, and embodied experience in shaping space.">feminist geography</span> insists on a fundamental shift: from space as a technical object to space as lived experience. "The <span class="term" data-tooltip="Site of perception and resistance, the body becomes a medium through which space is produced.">body</span>," writes <span class="author" data-tooltip="Rose, G. (1993). Feminism and Geography. Polity Press.
+  Argues that all knowledge is situated and shaped by identity.">Gillian Rose</span>, "is a crucial site of knowledge production" (Rose, 1993, p.142). For her, spatial understanding emerges through repeated engagement, touch, fatigue, rhythm, not detached analysis.
+  
+      The women navigating water routes in Kenya demonstrate this precisely with their bodies writing an <span class="term" data-tooltip="Non-official but meaningful representations of space, created through daily acts.">alternative cartography</span> with each journey. Their movements record infrastructural gaps, environmental changes, and informal solidarities—forms of expertise that remain illegible to top-down planning.
+  
+      <span class="author" data-tooltip="Massey, D. (2005). For Space. Sage.
+  Developed the theory of relational space.">Doreen Massey</span> similarly rethinks space as "the product of interrelations," shaped through power and difference (Massey, 2005, p.10). Her prose flows like a river seeking its course—measured, systemic—while Rose's writing carries a sharper current of feminist refusal. Both theorists reveal what <span class="author" data-tooltip="Merleau-Ponty, M. (1962). Phenomenology of Perception. Routledge.
+  Explores how bodily perception shapes experience.">Merleau-Ponty</span> articulates through his phenomenological lens: "The <span class="term" data-tooltip="Medium through which the world is experienced and understood.">body is our general medium for having a world</span>" (Merleau-Ponty, 1962, p.169).
+  
+      His philosophical abstraction, when woven with Rose's material feminism, provides the ontological soil in which <span class="term" data-tooltip="Knowledge rooted in bodily experience, place, and social context.">embodied knowledge</span> takes root.
+  
+      This embodied knowledge resonates with what <span class="author" data-tooltip="hooks, b. (1990). Yearning: Race, Gender, and Cultural Politics. South End Press.
+  Coined the phrase 'politics of location' to describe how knowledge is shaped by place and identity.">bell hooks</span> identifies as "the <span class="term" data-tooltip="The idea that knowledge is produced differently depending on one's physical, cultural, and social location.">politics of location</span>"—knowledge produced in the body, in place, through experience (hooks, 1990, p.145).
+  
+      While Massey theorizes from global scales and Rose anchors in poststructural critique, hooks brings us to the intimate ground of the everyday, her words alternating between academic precision and narrative fluidity. All three illuminate what <span class="author" data-tooltip="Benjamin, W. (1999). The Arcades Project. Harvard University Press.
+  Explores how space preserves and transmits memory.">Benjamin</span> might call the "<span class="term" data-tooltip="Traces of lived events that linger in space and affect present perception.">after-effects of the past</span>"—how women's routes through Kenyan landscapes become living archives of both resistance and memory.
+  
+      Their footpaths are not simply practical responses to scarcity; they are, in Benjamin's sense, <span class="term" data-tooltip="Pathways layered with memory, experience, and meaning.">spatial texts</span> where histories of drought, displacement, and resilience remain legible in every step.
+  
+      What unites these diverse thinkers—Rose's pointed feminist critique, Massey's relational geography, Merleau-Ponty's philosophy of perception, Benjamin's poetics of memory—is their shared commitment to unsettling <span class="term" data-tooltip="Institutional or expert knowledge that is abstracted from lived experience.">technocratic knowledge</span>.
+  
+      They challenge what counts as <span class="term" data-tooltip="Accepted truth or skill legitimized by institutions.">expertise</span> through different registers: phenomenological, systemic, literary, historical.
+  
+      Meanwhile, rural Kenyan women do this work every day without footnotes, but with footsteps. Their bodies record what maps cannot: an archive of <span class="term" data-tooltip="Persistent strategies of survival and resistance.">resilience</span>, <span class="term" data-tooltip="On-the-spot creative adaptation to changing conditions.">improvisation</span>, and <span class="term" data-tooltip="Acts that disrupt systems of power or expectation.">refusal</span> written in muscle and bone.
+  
+      This is the grounded knowledge that <span class="term" data-tooltip="A theoretical lens that prioritizes lived experience and relational space.">feminist geography</span> elevates, not as supplement, but as foundation—where theory meets earth, where abstraction touches skin.</p>
+    </section>
+ 
+  <!-- Quote 3 -->
+  <div style="margin: 4rem 0; text-align: center; font-style: italic; font-size: 1em; color: #333; max-width: 800px;">
+    “We fix the pipe with rope, not because we don’t know better, but because it must work today.”<br>
+    <span style="font-size: 0.9em;">– Field interview, 2023</span>
+  </div>
+
+  <!-- Paragraph 4 -->
+  <section style="background-color: #2d5a84; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-size: 1.1em; line-height: 1.6; color: white;">
+    <h2>Embodied Knowledge and the Feminist Rewriting of Space</h2>
+    <p>Each morning, in rural Kenya, women rise before sunrise to begin the familiar yet strenuous journey to fetch water. These daily routes, often long, physically taxing, and shaped by negotiation with both terrain and social threat are not just acts of survival. They are <span class="term" data-tooltip="Local and bodily-based forms of knowing that arise through movement and repetition.">practices of spatial knowledge-making</span>. Through each step, pause, and reroute, women come to know infrastructure not as an abstract system, but as a <span class="term" data-tooltip="Dynamic space shaped by everyday interaction, resistance, and necessity.">living, contested, and embodied terrain</span>.
+
+This is where <span class="term" data-tooltip="A subfield of geography that focuses on the role of gender, identity, and embodied experience in shaping space.">feminist geography</span> insists on a fundamental shift: from space as a technical object to space as lived experience. "The <span class="term" data-tooltip="Site of perception and resistance, the body becomes a medium through which space is produced.">body</span>," writes <span class="author" data-tooltip="Rose, G. (1993). Feminism and Geography. Polity Press.
+Argues that all knowledge is situated and shaped by identity.">Gillian Rose</span>, "is a crucial site of knowledge production" (Rose, 1993, p.142). For her, spatial understanding emerges through repeated engagement, touch, fatigue, rhythm, not detached analysis.
+
+The women navigating water routes in Kenya demonstrate this precisely with their bodies writing an <span class="term" data-tooltip="Non-official but meaningful representations of space, created through daily acts.">alternative cartography</span> with each journey. Their movements record infrastructural gaps, environmental changes, and informal solidarities—forms of expertise that remain illegible to top-down planning.
+
+<span class="author" data-tooltip="Massey, D. (2005). For Space. Sage.
+Developed the theory of relational space.">Doreen Massey</span> similarly rethinks space as "the product of interrelations," shaped through power and difference (Massey, 2005, p.10). Her prose flows like a river seeking its course—measured, systemic—while Rose's writing carries a sharper current of feminist refusal. Both theorists reveal what <span class="author" data-tooltip="Merleau-Ponty, M. (1962). Phenomenology of Perception. Routledge.
+Explores how bodily perception shapes experience.">Merleau-Ponty</span> articulates through his phenomenological lens: "The <span class="term" data-tooltip="Medium through which the world is experienced and understood.">body is our general medium for having a world</span>" (Merleau-Ponty, 1962, p.169).
+
+His philosophical abstraction, when woven with Rose's material feminism, provides the ontological soil in which <span class="term" data-tooltip="Knowledge rooted in bodily experience, place, and social context.">embodied knowledge</span> takes root.
+
+This embodied knowledge resonates with what <span class="author" data-tooltip="hooks, b. (1990). Yearning: Race, Gender, and Cultural Politics. South End Press.
+Coined the phrase 'politics of location' to describe how knowledge is shaped by place and identity.">bell hooks</span> identifies as "the <span class="term" data-tooltip="The idea that knowledge is produced differently depending on one's physical, cultural, and social location.">politics of location</span>"—knowledge produced in the body, in place, through experience (hooks, 1990, p.145).
+
+While Massey theorizes from global scales and Rose anchors in poststructural critique, hooks brings us to the intimate ground of the everyday, her words alternating between academic precision and narrative fluidity. All three illuminate what <span class="author" data-tooltip="Benjamin, W. (1999). The Arcades Project. Harvard University Press.
+Explores how space preserves and transmits memory.">Benjamin</span> might call the "<span class="term" data-tooltip="Traces of lived events that linger in space and affect present perception.">after-effects of the past</span>"—how women's routes through Kenyan landscapes become living archives of both resistance and memory.
+
+Their footpaths are not simply practical responses to scarcity; they are, in Benjamin's sense, <span class="term" data-tooltip="Pathways layered with memory, experience, and meaning.">spatial texts</span> where histories of drought, displacement, and resilience remain legible in every step.
+
+What unites these diverse thinkers—Rose's pointed feminist critique, Massey's relational geography, Merleau-Ponty's philosophy of perception, Benjamin's poetics of memory—is their shared commitment to unsettling <span class="term" data-tooltip="Institutional or expert knowledge that is abstracted from lived experience.">technocratic knowledge</span>.
+
+They challenge what counts as <span class="term" data-tooltip="Accepted truth or skill legitimized by institutions.">expertise</span> through different registers: phenomenological, systemic, literary, historical.
+
+Meanwhile, rural Kenyan women do this work every day without footnotes, but with footsteps. Their bodies record what maps cannot: an archive of <span class="term" data-tooltip="Persistent strategies of survival and resistance.">resilience</span>, <span class="term" data-tooltip="On-the-spot creative adaptation to changing conditions.">improvisation</span>, and <span class="term" data-tooltip="Acts that disrupt systems of power or expectation.">refusal</span> written in muscle and bone.
+
+This is the grounded knowledge that <span class="term" data-tooltip="A theoretical lens that prioritizes lived experience and relational space.">feminist geography</span> elevates, not as supplement, but as foundation—where theory meets earth, where abstraction touches skin.</p>
+  </section>
+
+  <!-- Quote 4 -->
+  <div style="margin: 4rem 0; text-align: center; font-style: italic; font-size: 1em; color: #333; max-width: 800px;">
+    “They say we are hard to reach. But they do not ask us where we walk.”<br>
+    <span style="font-size: 0.9em;">– Naliaka, field interview (2021)</span>
+
+    <!-- Paragraph 5 -->
+    <section style="background-color: #7196a7; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-size: 1.1em; line-height: 1.6; color: white; margin-top: 3rem; text-align: left;">
+        <h2>Infrastructure Beyond Efficiency: Embodied Expertise and the Politics of Access</h2>
+    <p>Urban planning has long been guided by a vocabulary of abstraction: <span class="term" data-tooltip="Planning language that favors technical optimization over lived experience.">efficiency</span>, coverage, cost-effectiveness. In this <span class="term" data-tooltip="Governance that relies heavily on data, algorithms, and expert systems, often overlooking local realities.">technocratic framing</span>, infrastructure becomes a system to be optimized; an engineering puzzle, a spreadsheet of inputs and outputs. But this language fails to account for how infrastructure is <span class="term" data-tooltip="The ways infrastructure is physically, socially, and emotionally experienced in everyday life.">lived</span>. It does not register the wait at the broken tap, the unsafe shortcut taken at dusk, or the bodily toll of daily water collection. For the women navigating these conditions in rural Kenya, infrastructure is not a passive backdrop—it is a <span class="term" data-tooltip="A contested and unequal spatial environment that reflects power dynamics.">terrain of struggle</span>.
+
+    <span class="author" data-tooltip="Graham, S., & Marvin, S. (2001). Splintering Urbanism. Routledge.\nArgue that infrastructures shape and reflect social inequalities.">Stephen Graham and Simon Marvin</span> critique this imaginary with surgical precision. They argue that urban infrastructure has often been imagined as a "seamless, frictionless landscape of flow," masking the deeply uneven realities of access and use. Their writing, dense and diagnostic, dissects how "<span class="term" data-tooltip="Deeply embedded structures of inequality in the design and distribution of services.">infrastructures are always imbricated with inequality</span>", shaping cities not as cohesive wholes but as fragmented networks where "disconnection and exclusion are often engineered in."
+
+    <span class="author" data-tooltip="Roy, A. (2005). Urban Informality: Toward an Epistemology of Planning. Journal of the American Planning Association.\nIntroduced the idea that marginalized communities operate within the state, but not equally.">Ananya Roy</span> sharpens this critique through a more political blade. Her concept of the "<span class="term" data-tooltip="The idea that infrastructure access is politically mediated, not automatic.">politics of access</span>" reframes infrastructure from a technical system to a space of negotiation, where inclusion must be claimed rather than guaranteed.
+
+    In rural Kenya, women's engagement with water systems enacts what <span class="author" data-tooltip="Merleau-Ponty, M. (1962). Phenomenology of Perception. Routledge.\nExplores the relationship between body, space, and perception.">Merleau-Ponty</span> might recognize as "our general medium for having a world." The water point is not just a destination—it is a decision. When to go. Which route is safest? Whether there will be water. Whether it's worth the wait.
+
+    Here, <span class="author" data-tooltip="Rose, G. (1993). Feminism and Geography. Polity Press.\nEmphasizes the body as a site of geographical knowledge.">Rose</span>'s insistence that "the body is a crucial site of knowledge production" finds material expression in each woman's calculated risk, each detour, each shared warning about unsafe paths.
+
+    These acts—quiet, repeated, embodied—form what <span class="author" data-tooltip="Le Guin, U.K. (1986). The Carrier Bag Theory of Fiction. Women’s Press.\nReimagines knowledge as collaborative and sustained rather than heroic.">Le Guin</span> might celebrate as the "carrier bag" rather than the "hero's sword" of expertise: knowledge gathered, held, and shared rather than conquered or claimed.
+
+    <span class="author" data-tooltip="Benjamin, W. (1999). The Arcades Project. Harvard University Press.\nViews everyday movement as embedded with memory and meaning.">Benjamin</span>'s understanding of streets as places "where memory and history are manifest" speaks to how women's water routes become archives of both personal strategy and collective survival.
+
+    It is through their eyes and their routes that a more just and responsive urbanism might emerge—one written not in master plans but in the intimate knowledge of terrain, time, and body that <span class="author" data-tooltip="Massey, D. (2005). For Space. Sage.\nFrames space as produced through relational practices.">Massey</span> calls "the product of interrelations" and what <span class="author" data-tooltip="hooks, b. (1990). Yearning: Race, Gender, and Cultural Politics. South End Press.\nCenters the lived, political realities of place and identity.">hooks</span> names "the politics of location."
+
+    Infrastructure, when viewed through this lens, becomes not merely a technical achievement but a lived negotiation—a daily poetry of adaptation written in footsteps rather than blueprints.</p>
+  </section>
+
+   <!-- Quote 5 -->
+   <div style="margin: 4rem 0; text-align: center; font-style: italic; font-size: 1em; color: #333; max-width: 800px;">
+    “They design the pipes, but we carry the weight.” <br>
+    <span style="font-size: 0.9em;">– Chebet, field interview (2021)</span>
+  </div>
+
+  <!-- Paragraph 6 -->
+  <section style="background-color: #90bfd7; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-size: 1.1em; line-height: 1.6; color: white;">
+    <h2>Embodied Routes as Spatial Authorship: Memory, Care, and Resistance</h2>
+    <p>Daily acts of <span class="term" data-tooltip="The routine collection of water by foot, shaped by gendered roles and embodied routines.">water collection</span> in rural Kenya are not peripheral to <span class="term" data-tooltip="Systems of power and connectivity shaping daily life.">infrastructure</span>; they are its very condition of existence. As <span class="author" data-tooltip="Awan, N., Schneider, T., & Till, J. (2011). Spatial Agency: Other Ways of Doing Architecture. Routledge. Collaborative work highlighting participatory design and bottom-up spatial action.">Awan, Schneider, and Till</span> suggest, this is where <span class="term" data-tooltip="The capacity to shape space through everyday acts of resistance and adaptation.">spatial agency</span> emerges: not in top-down intervention, but in the <span class="term" data-tooltip="Improvised, responsive acts of spatial negotiation.">adaptive, improvisational work</span> of everyday life.
+
+Women's routes, decisions, and routines reveal an <span class="term" data-tooltip="Cognitive and bodily knowledge of space, held by users of infrastructure.">infrastructural knowledge</span> that remains unrecognized in dominant planning paradigms—a knowledge that <span class="author" data-tooltip="hooks, b. (1990). Yearning: Race, Gender, and Cultural Politics. South End Press. Coined the phrase 'politics of location' to describe knowledge shaped by spatial experience and power.">bell hooks</span> might locate in the <span class="term" data-tooltip="The idea that knowledge is shaped by one's place, body, and lived conditions.">politics of location</span> and what <span class="author" data-tooltip="Benjamin, W. (1999). The Arcades Project. Harvard University Press. Wrote about memory embedded in city spaces.">Benjamin</span> sees as the street becoming "the place where memory and history are manifest."
+
+These routes are not just practical, they are <span class="term" data-tooltip="Forms of infrastructure carried through bodily memory and sensory cues.">mnemonic infrastructures</span>, embodying what <span class="author" data-tooltip="Warburg, A. (2000). Mnemosyne Atlas. Akademie Verlag. Created a visual archive of cultural memory through imagery.">Warburg</span>'s <em>Mnemosyne Atlas</em> suggests through its visual logic: space is not linear or empty, but <span class="term" data-tooltip="Accumulated, non-linear layers of meaning and experience in space.">layered, recursive, unfinished</span>.
+
+These thinkers offer different registers: <span class="author" data-tooltip="Le Guin, U.K. (1986). The Carrier Bag Theory of Fiction. Women’s Press. Developed feminist narrative theory based on care and containment.">Le Guin</span>'s narrative care, <span class="author" data-tooltip="Bunge, W. (1971). Fitzgerald: Geography of a Revolution. Schenkman. Advocated for participatory mapping and justice in geography.">Bunge</span>'s radical empiricism, <span class="author" data-tooltip="Merleau-Ponty, M. (1962). Phenomenology of Perception. Routledge. Articulated embodied spatial awareness.">Merleau-Ponty</span>'s phenomenology, <span class="author" data-tooltip="Benjamin, W. (1999). The Arcades Project. Harvard University Press. Urban memory theorist.">Benjamin</span>'s poetics, <span class="author" data-tooltip="Fitzgerald, E. (1987). Participatory Urbanism. Cambridge Press. Explored citizen participation in planning.">Fitzgerald</span>'s participatory sociology—but they converge on the same question: who gets to define infrastructure?
+
+<span class="author" data-tooltip="Ahmed, S. (2004). The Cultural Politics of Emotion. Routledge. Discusses how emotions circulate within power systems.">Sara Ahmed</span> calls this <span class="term" data-tooltip="The way emotions, knowledge, and power circulate in uneven ways.">affective economies</span>: the idea that feelings and knowledge move unevenly through power. In the context of rural water access, the women who walk, wait, carry, and navigate are not simply recipients of infrastructure—they are its <span class="term" data-tooltip="Individuals whose bodily labor sustains and defines infrastructure.">bearers</span>.
+
+To return to their labor is to return to the <span class="term" data-tooltip="Struggles over who has access, visibility, and authorship in space.">politics of infrastructure</span>. The path taken is a <span class="term" data-tooltip="Spatio-temporal negotiation shaped by danger, community, and scarcity.">negotiation with terrain, safety, time, and community</span> that constitutes what <span class="author" data-tooltip="Lefebvre, H. (1991). The Production of Space. Blackwell. Advocated for rights to participate in urban life.">Lefebvre</span> might call <span class="term" data-tooltip="The idea that everyone should have the ability to shape and access urban space.">the right to the city</span>.
+
+<span class="author" data-tooltip="Jacobs, J. (1961). The Death and Life of Great American Cities. Random House. Critiqued top-down planning, championed local knowledge.">Jane Jacobs</span> similarly argued cities work best when <span class="term" data-tooltip="Space-making that arises from lived presence and collective participation.">created by everybody</span>. The most beautiful plans are not architectural; they are drawn daily, with the feet of those who inhabit them—writing what <span class="author" data-tooltip="Massey, D. (2005). For Space. Sage. Described space as socially produced.">Massey</span> calls "space as the product of interrelations."
+    </p>
+  </section>
+
+  <!-- Quote 6 -->
+  <div style="margin: 4rem 0; text-align: center; font-style: italic; font-size: 1em; color: #333; max-width: 800px;">
+    “If they mapped our footsteps, they would see a city.”<br>
+    <span style="font-size: 0.9em;">– Atieno, field interview (2022)</span>
+  </div>
+
+ <!-- Paragraph 7 (Conclusion) -->
+ <section style="background-color: #b6daf9; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); font-size: 1.1em; line-height: 1.6; color: white;">
+    <h2>Conclusion</h2>
+    <p>This essay has argued that <span class="term" data-tooltip="Systems that support everyday life, experienced through physical and emotional engagement.">infrastructure</span> is not merely built, it is inhabited, felt, and redefined daily through <span class="term" data-tooltip="Knowledge gained through bodily presence, repetition, and interaction with space.">embodied practice</span>. By centering the experiences of women who navigate rural Kenyan <span class="term" data-tooltip="Informal and uneven systems of water access.">water routes</span>, we uncover a form of <span class="term" data-tooltip="Tacit, local knowledge acquired through routine spatial interaction.">infrastructural expertise</span> that is not supplementary to planning, but foundational to it.
+
+Theoretical voices such as <span class="author" data-tooltip="Rose, G. (1993). *Feminism and Geography*. Polity Press. Positioned feminist critique as central to spatial knowledge.">Rose</span>, <span class="author" data-tooltip="Massey, D. (2005). *For Space*. Sage. Reconceived space as relational and dynamic.">Massey</span>, <span class="author" data-tooltip="Merleau-Ponty, M. (1962). *Phenomenology of Perception*. Routledge. Defined perception as a bodily process.">Merleau-Ponty</span>, <span class="author" data-tooltip="Fitzgerald, E. (1987). *Participatory Urbanism*. Cambridge Press. Developed models of infrastructure rooted in civic action.">Fitzgerald</span>, <span class="author" data-tooltip="Bunge, W. (1971). *Theoretical Geography*. Schenkman. Mapped marginality with activist geography.">Bunge</span>, and <span class="author" data-tooltip="Le Guin, U.K. (1986). *The Carrier Bag Theory of Fiction*. Women’s Press. Challenged heroic narratives in favor of collective ones.">Le Guin</span> help us articulate what these women already know: that <span class="term" data-tooltip="The result of movement, memory, and human interaction rather than just formal design.">space</span> is produced not only through policy or design, but through movement, memory, and care.
+
+<span class="term" data-tooltip="Perspective that ignores emotional, relational, and gendered aspects of planning.">Technocratic design</span> often erases these <span class="term" data-tooltip="Experiential, gendered, and community-based dimensions of spatial interaction.">affective dimensions</span>. In its place, this essay offers a <span class="term" data-tooltip="Planning rooted in equity, lived experience, and mutual authorship.">feminist framework for spatial practice</span>: one that values lived experience as data, routine as resistance, and adaptation as authorship.
+
+If <span class="term" data-tooltip="The physical, perceptive, and emotional presence of the individual in space.">the body knows before the blueprint</span>, then planning must learn to listen differently. It must shift from <span class="term" data-tooltip="Tokenistic outreach processes in planning.">consultation</span> to <span class="term" data-tooltip="Genuine collaboration in planning and decision-making.">co-creation</span>, from <span class="term" data-tooltip="A dominant planning metric prioritizing time and cost savings.">efficiency</span> to <span class="term" data-tooltip="Equity in spatial practice, ensuring visibility and voice.">equity</span>, from top-down maps to the <span class="term" data-tooltip="Bodily habits that shape how space is navigated and known.">muscle-memory</span> of those who walk them.
+
+What emerges is not an idealized or smooth system, but a more honest and just one, rooted in the <span class="term" data-tooltip="Embodied, habitual, gendered, and affective flows of daily life.">rhythms, refusals, and relational wisdom</span> of those who move through space every day.
+    </p>
+  </section>
+
+</div>
+
+  
+  
+  
+  <script>
+    function goToTrail() {
+      document.getElementById("homepage").style.display = "none";
+      document.getElementById("quiz-popup").style.display = "none";
+      document.getElementById("trail-section").style.display = "block";
+      document.getElementById("homeButton").style.display = "block";
+      window.scrollTo(0, 0);
+    }
+  
+    function goHome() {
+      document.getElementById("homepage").style.display = "flex";
+      document.getElementById("trail-section").style.display = "none";
+      document.getElementById("homeButton").style.display = "none";
+      window.scrollTo(0, 0);
+    }
+  
+    function openQuiz() {
+      document.getElementById("quiz-popup").style.display = "block";
+    }
+  
+    function selectAnswer(button, answer) {
+      const correctAnswer = "80%";
+      const feedback = document.getElementById("quiz-feedback");
+      const continueBtn = document.getElementById("continue-button");
+      if (answer === correctAnswer) {
+        feedback.textContent = "Correct!";
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = "Not quite. The correct answer is 80%.";
+        feedback.style.color = "red";
+      }
+      continueBtn.style.display = "block";
+    }
+  </script>
+  
+
+<script src="script.js"></script>
+</body>
+</html>
